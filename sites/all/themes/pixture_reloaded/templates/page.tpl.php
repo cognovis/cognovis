@@ -44,26 +44,48 @@
 
     <div id="columns"><div class="columns-inner clearfix">
       <div id="content-column"><div class="content-inner">
+
         <?php print render($page['highlight']); ?> <!-- /highlight -->
+
         <?php $tag = $title ? 'section' : 'div'; ?>
         <<?php print $tag; ?> id="main-content" role="main">
-          <?php if ($title || $tabs = render($tabs) || $action_links = render($action_links)): ?>
+
+          <?php print render($title_prefix); ?>
+          <?php if ($title || $primary_local_tasks || $secondary_local_tasks || $action_links = render($action_links)): ?>
             <header class="clearfix">
-              <?php print render($title_prefix); ?>
-              <?php if ($title): ?><h1 id="page-title"><?php print $title; ?></h1> <!-- /page title -->
+              <?php if ($title): ?>
+                <h1 id="page-title"><?php print $title; ?></h1>
               <?php endif; ?>
-              <?php print render($title_suffix); ?>
-              <?php if ($tabs = render($tabs)): print $tabs; endif ?> <!-- /local task tabs -->
-              <?php if ($action_links = render($action_links)): ?><ul class="action-links"><?php print $action_links; ?></ul><?php endif; ?> <!-- /action links -->
+              <?php if ($primary_local_tasks || $secondary_local_tasks || $action_links): ?>
+                <div id="tasks" class="clearfix">
+                  <?php if ($primary_local_tasks): ?>
+                    <ul class="tabs primary clearfix"><?php print render($primary_local_tasks); ?></ul>
+                  <?php endif; ?>
+                  <?php if ($secondary_local_tasks): ?>
+                    <ul class="tabs secondary clearfix"><?php print render($secondary_local_tasks); ?></ul>
+                  <?php endif; ?>
+                  <?php if ($action_links = render($action_links)): ?>
+                    <ul class="action-links clearfix"><?php print $action_links; ?></ul>
+                  <?php endif; ?>
+                </div>
+              <?php endif; ?>
             </header>
           <?php endif; ?>
+          <?php print render($title_suffix); ?>
+
           <?php print render($page['content']); ?> <!-- /content -->
+
           <?php print $feed_icons; ?> <!-- /feed icons -->
+
         </<?php print $tag; ?>> <!-- /main-content -->
+
         <?php print render($page['content_aside']); ?> <!-- /content-aside -->
+
       </div></div> <!-- /content-column -->
+
       <?php print render($page['sidebar_first']); ?>
       <?php print render($page['sidebar_second']); ?>
+
     </div></div> <!-- /columns -->
 
     <?php print render($page['tertiary_content']); ?> <!-- /tertiary-content -->

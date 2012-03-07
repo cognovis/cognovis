@@ -25,15 +25,10 @@ function adaptivetheme_preprocess_html(&$vars) {
 
   global $language;
 
-  // set the doctype with vars
-  if (module_exists('rdf')) {
-    $vars['doctype'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">' . "\n";
-    $vars['rdf_profile'] = ' profile="' . $vars['grddl_profile'] . '"';
-  }
-  else {
-    $vars['doctype'] = '<!DOCTYPE html>' . "\n";
-    $vars['rdf_profile'] = '';
-  }
+  // AT no longer uses doctype switching or $rdf_profile, these maintain backwards
+  // compatibility with pre 7.x-2.1 versions of html.tpl.php
+  $vars['doctype'] = '<!DOCTYPE html>' . "\n";
+  $vars['rdf_profile'] = '';
 
   // Clean up the lang attributes, great idea Zen
   $vars['html_attributes'] = 'lang="' . $language->language . '" dir="' . $language->dir . '"';
@@ -52,17 +47,10 @@ function adaptivetheme_preprocess_html(&$vars) {
       // Add unique class for each website section.
       list($section, ) = explode('/', $path, 2);
       $arg = explode('/', $_GET['q']);
-      if ($arg[0] == 'node') {
-        if ($arg[1] == 'add') {
-          $section = 'node-add';
-        }
-        elseif (isset($arg[2]) && is_numeric($arg[1]) && ($arg[2] == 'edit' || $arg[2] == 'delete')) {
-          $section = 'node-' . $arg[2];
-        }
-      }
       $vars['classes_array'][] = drupal_html_class('section-' . $section);
     }
-    // Set classes for views and panels pages, thanks again Zen!
+
+    // Set classes for views and panels pages, thanks again Zen, you're amazing!
     $vars['menu_item'] = menu_get_item();
     switch ($vars['menu_item']['page_callback']) {
       case 'views_page':
@@ -96,10 +84,26 @@ function adaptivetheme_preprocess_html(&$vars) {
     drupal_add_css($filepath, array(
       'preprocess' => variable_get('preprocess_css', '') == 1 ? TRUE : FALSE,
       'group' => CSS_THEME,
-      'media' => 'screen',
+      'media' => 'all',
       'every_page' => TRUE,
       )
     );
+  }
+
+  // Ad respond.js to the footer to avoid crashes in IE8
+  drupal_add_js(drupal_get_path('theme', 'adaptivetheme') . '/js/respond.js',
+    array(
+      'type' => 'file',
+      'scope' => 'footer',
+      'group' => JS_THEME,
+      'preprocess' => TRUE,
+      'cache' => TRUE,
+    )
+  );
+
+  // add a body class is the site name is hidden
+  if (theme_get_setting('toggle_name') == FALSE) {
+    $vars['classes_array'][] = 'site-name-hidden';
   }
 }
 
@@ -213,7 +217,7 @@ function adaptivetheme_preprocess_node(&$vars) {
 
   if (theme_get_setting('extra_article_classes')) {
     $vars['classes_array'][] = $vars['zebra'];
-    if ($vars['picture']) {
+    if ($vars['display_submitted'] && !empty($vars['picture'])) {
       $vars['classes_array'][] = 'article-with-picture';
     }
   }

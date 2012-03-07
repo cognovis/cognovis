@@ -411,18 +411,13 @@ body.bf-ms,
 /* Bullets */
 .mb-n ul.menu {
   padding: 0;
-  margin: 0;
 }
 .mb-n ul li.leaf,
 .mb-n ul li.collapsed,
 .mb-n ul li.expanded {
   list-style: none;
   list-style-image: none;
-  margin: 0;
   padding: 0;
-}
-.mb-ah ul.menu {
-  margin: 0;
 }
 .mb-ah ul li.leaf,
 .mb-ah ul li.collapsed,
@@ -431,7 +426,6 @@ body.bf-ms,
 }
 .mb-ad ul.menu {
   padding: 0 0 0 0.4em;
-  margin: 0;
 }
 .mb-ad ul li.leaf,
 .mb-ad ul li.collapsed,
@@ -440,7 +434,6 @@ body.bf-ms,
 }
 .mb-ca ul.menu {
   padding: 0 0 0 1.2em;
-  margin: 0;
 }
 .mb-ca ul li.leaf,
 .mb-ca ul li.collapsed,
@@ -449,7 +442,6 @@ body.bf-ms,
 }
 .mb-fa ul.menu {
   padding: 0 0 0 1.2em;
-  margin: 0;
 }
 .mb-fa ul li.leaf,
 .mb-fa ul li.collapsed,
@@ -458,7 +450,6 @@ body.bf-ms,
 }
 .mb-sa ul.menu {
   padding: 0 0 0 1.2em;
-  margin: 0;
 }
 .mb-sa ul li.leaf,
 .mb-sa ul li.collapsed,
@@ -648,24 +639,51 @@ div.admin-panel,
   border-radius: 2px;
 }
 /* Noggin header image extra settings */
-body.ni-a-tl header#header {background-position: top left;}
-body.ni-a-tr header#header {background-position: top right;}
-body.ni-a-tc header#header {background-position: top center;}
-body.ni-a-ml header#header {background-position: center left;}
-body.ni-a-mr header#header {background-position: center right;}
-body.ni-a-mc header#header {background-position: center center;}
-body.ni-a-bl header#header {background-position: bottom left;}
-body.ni-a-br header#header {background-position: bottom center;}
-body.ni-a-bc header#header {background-position: bottom right;}
-body.ni-r-r   header#header {background-repeat: repeat;}
-body.ni-r-rx header#header {background-repeat: repeat-x;}
-body.ni-r-ry header#header {background-repeat: repeat-y;}
-body.ni-r-nr header#header {background-repeat: no-repeat;}
-body.ni-w-ftw header#header {
+body.ni-a-tl #header .header-inner {background-position: top left;}
+body.ni-a-tr #header .header-inner {background-position: top right;}
+body.ni-a-tc #header .header-inner {background-position: top center;}
+body.ni-a-ml #header .header-inner {background-position: center left;}
+body.ni-a-mr #header .header-inner {background-position: center right;}
+body.ni-a-mc #header .header-inner {background-position: center center;}
+body.ni-a-bl #header .header-inner {background-position: bottom left;}
+body.ni-a-br #header .header-inner {background-position: bottom center;}
+body.ni-a-bc #header .header-inner {background-position: bottom right;}
+body.ni-r-r   #header .header-inner {background-repeat: repeat;}
+body.ni-r-rx #header .header-inner {background-repeat: repeat-x;}
+body.ni-r-ry #header .header-inner {background-repeat: repeat-y;}
+body.ni-r-nr #header .header-inner {background-repeat: no-repeat;}
+body.ni-w-ftw #header .header-inner {
   -o-background-size: 100% auto;
   -webkit-background-size: 100% auto;
   -khtml-background-size: 100% auto;
   -moz-background-size: 100% auto;
   background-size: 100% auto;
   background-origin: border-box;
+}
+
+/* Main menu position - left is default */
+/* Center */
+.mbp-c #menu-bar .menu-wrapper {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+}
+.mbp-c #menu-bar .menu-wrapper ul {
+  text-align: left;
+}
+/* IE6/7 */
+.ie6-7 .mbp-c #menu-bar .menu-wrapper  ul {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+.ie6-7 .mbp-c #menu-bar .menu-wrapper  .sf-menu ul li {
+	left: 0;
+}
+.ie6-7 .mbp-c #menu-bar .menu-wrapper  .sf-menu li {
+	left: -50%;
+}
+/* Right */
+.mbp-r #menu-bar .menu-wrapper {
+  float: right;
 }

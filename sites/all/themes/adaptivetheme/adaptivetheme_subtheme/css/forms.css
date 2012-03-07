@@ -15,9 +15,7 @@ input {
   margin: 0;
   max-width: 100%;
 }
-input.title {
-  font-size: 1.385em;
-}
+
 input.text,
 input.title,
 textarea,
@@ -25,6 +23,7 @@ select {
   border: 1px solid #ccc;
   margin: 0;
 }
+
 /* Focus styles for accessibility and usabiltiy. */
 .form-text:focus,
 .form-checkbox:focus,
@@ -37,6 +36,8 @@ textarea:focus {
   border: 1px solid #fc0;
   background: #fff;
 }
+
+/* Inputs and textarea */
 input.text,
 input.title {
   padding: .5em;
@@ -51,6 +52,11 @@ textarea,
 input {
   font: 1em normal Arial, Helvetica, sans-serif;
 }
+div.resizable-textarea textarea {
+  margin-top: 0;
+}
+
+/* Misc */
 .form-item,
 .form-action {
   margin-top: 10px;
@@ -68,17 +74,11 @@ fieldset .description,
 .fieldset-layout-settings dd {
   font-size: 0.846em;
 }
+
+/* Required, mark */
 span.form-required,
 span.marker {}
-#article-admin-filter ul {
-  padding: .5em 0;
-}
-#edit-operation-wrapper select {
-  margin: .5em;
-}
-div.resizable-textarea textarea {
-  margin-top: 0;
-}
+
 
 /* Fieldsets */
 fieldset {
@@ -116,6 +116,8 @@ html.js fieldset.collapsed {
   background: transparent;
   padding-top: 5px;
 }
+/* Form descriptions */
+.description {}
 
 /* Search */
 #search-block-form {}
@@ -179,19 +181,27 @@ fieldset#edit-advanced fieldset .fieldset-legend {
 #user-login li.openid-link {
   background: none;
 }
+
+/* hide lable class - mostly deprecated but could be present in an upgraded theme */
 .hide-label label {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
   clip: rect(1px, 1px, 1px, 1px);
   background: none;
 }
+
+/* Admin filters, could be redundant, need to test. */
 #user-admin-filter ul li,
 #article-admin-filter ul li {
   list-style: none;
 }
-.description {
-  color: #555;
+#article-admin-filter ul {
+  padding: .5em 0;
 }
+#edit-operation-wrapper select {
+  margin: .5em;
+}
+
 /* Tips overrides */
 .field-type-text-long fieldset {
   padding: 10px 0;
@@ -208,6 +218,12 @@ fieldset .filter-help {
   margin: 0;
   padding: 5px 18px 10px;
 }
+.tips {
+  font-size: 0.857em;
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+
 /* Special case modules */
 #devel-switch-user-form {
   margin-bottom: 0;

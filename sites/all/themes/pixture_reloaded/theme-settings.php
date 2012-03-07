@@ -1,16 +1,20 @@
 <?php
 // Pixture Reloaded
+
+// Include Google Fonts Stuff
 include_once(drupal_get_path('theme', 'adaptivetheme') . '/inc/google.web.fonts.inc');
+
+// Set the correct selector automagically for Noggin header images
+if (module_exists('noggin')) {
+  $default_var = variable_get('noggin:header_selector', 'div#header');
+  if ($default_var == 'div#header') {
+    variable_set('noggin:header_selector', '#header .header-inner');
+  }
+}
 
 /**
  * @file theme-settings.php
  */
-if (module_exists('noggin')) {
-  $default_var = variable_get('noggin:header_selector', 'div#header');
-  if ($default_var == 'div#header') {
-    variable_set('noggin:header_selector', 'header#header');
-  }
-}
 
 /**
  * Implements hook_form_system_theme_settings_alter().
@@ -563,12 +567,31 @@ function pixture_reloaded_form_system_theme_settings_alter(&$form, &$form_state)
     '#title' => t('Show captions on full view'),
     '#default_value' => theme_get_setting('image_caption_full'),
   );
-  $form['at']['menu_styles'] = array(
+  $form['at']['menus'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Menu Settings'),
+  );
+  $form['at']['menus']['mbp'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Menu Bar Alignment'),
+    '#description' => t('<h3>Menu Bar Alignment</h3><p>Position the Menu Bar left, center or right. This will position any menu (Superfish included) placed in the Menu Bar region.</p>'),
+  );
+  $form['at']['menus']['mbp']['menu_bar_position'] = array(
+    '#type' => 'radios',
+    '#title' => t('Set the position of the Menu bar'),
+    '#default_value' => theme_get_setting('menu_bar_position'),
+    '#options' => array(
+      'mbp-l' => t('Left (default)'),
+      'mbp-c' => t('Center'),
+      'mbp-r' => t('Right'),
+    ),
+  );
+  $form['at']['menus']['mb'] = array(
     '#type' => 'fieldset',
     '#title' => t('Menu Bullets'),
     '#description' => t('<h3>Menu Bullets</h3><p>This setting allows you to customize the bullet images used on menus items. Bullet images only show on normal vertical block menus.</p>'),
   );
-  $form['at']['menu_styles']['menu_bullets'] = array(
+  $form['at']['menus']['mb']['menu_bullets'] = array(
     '#type' => 'select',
     '#title' => t('Menu Bullets'),
     '#default_value' => theme_get_setting('menu_bullets'),

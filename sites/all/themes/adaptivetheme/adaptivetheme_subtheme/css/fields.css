@@ -1,5 +1,5 @@
+/* Fields */
 
-/* Wrapper for all fields. */
 .field {}
 
 /* Field labels are h2 in Adaptivetheme */
@@ -50,7 +50,7 @@
 .field-type-taxonomy-term-reference ul li {
   display: inline;
   list-style: none;
-  padding: 0 .75em 0 0;
+  padding: 0 10px 0 0;
 }
 
 /* Imagefield skinr settings */
@@ -59,7 +59,7 @@
 }
 .ai-r .field-type-image {
   margin: 4px 0 10px 20px;
-} 
+}
 .ai-b,
 .ai-b .block-inner,
 .ai-b .block-content {}

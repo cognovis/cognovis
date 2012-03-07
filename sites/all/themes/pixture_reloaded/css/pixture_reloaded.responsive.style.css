@@ -40,6 +40,10 @@
   #menu-bar {
     padding: 0 2px;
   }
+  #menu-bar .menu-wrapper {
+    display: block !important;
+    float: none !important;
+  }
   #menu-bar .menu-wrapper > ul > li {
     display: block;
     float: none;
@@ -55,6 +59,10 @@
   }
   #menu-bar, #primary-menu-bar {
     background-image: none;
+  }
+  .ie6-7 .mbp-c #menu-bar .menu-wrapper  ul,
+  .ie6-7 .mbp-c #menu-bar .menu-wrapper  .sf-menu li {
+    left: auto;
   }
 }
 
@@ -93,6 +101,10 @@
   #menu-bar {
     padding: 0 2px;
   }
+  #menu-bar .menu-wrapper {
+    display: block !important;
+    float: none !important;
+  }
   #menu-bar .menu-wrapper a {
     display: block;
     padding: 3px 10px;
@@ -122,6 +134,10 @@
   .region-sidebar-first .block,
   .region-sidebar-second .block {
     width: 100%;
+  }
+  .ie6-7 .mbp-c #menu-bar .menu-wrapper  ul,
+  .ie6-7 .mbp-c #menu-bar .menu-wrapper  .sf-menu li {
+    left: auto;
   }
 }
 

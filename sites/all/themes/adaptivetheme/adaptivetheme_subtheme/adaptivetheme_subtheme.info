@@ -1,5 +1,6 @@
 
 ;----------// Theme Information
+
   name        = AT Subtheme
   description = Starter subtheme for Adaptivetheme. Copy this subtheme to get started building your own Drupal theme. For help see our <b><a href="http://adaptivethemes.com/documentation/adaptivethemes-documentation">documentation</a></b> and <b><a href="http://vimeo.com/channels/61157">video tutorials</a></b>. If you have a problem and need additional help please use the <b><a href="http://drupal.org/project/issues/adaptivetheme">issue queue</a></b>.
   core        = 7.x
@@ -9,25 +10,28 @@
 
 
 ;----------// Modular stylesheets
+
   stylesheets[all][] = css/html-elements.css
   stylesheets[all][] = css/forms.css
   stylesheets[all][] = css/tables.css
+  stylesheets[all][] = css/fields.css
   stylesheets[all][] = css/page.css
+  stylesheets[all][] = css/navigation.css
   stylesheets[all][] = css/articles.css
   stylesheets[all][] = css/comments.css
-  stylesheets[all][] = css/fields.css
   stylesheets[all][] = css/blocks.css
-  stylesheets[all][] = css/navigation.css
-  stylesheets[all][] = css/skins.css
   stylesheets[print][] = css/print.css
 
   ; Disabled styles - un-comment if you need these.
-  ; TODO - dark.css may still need some work but its pretty good.
   ;stylesheets[all][] = css/admin-section.css
+  ;stylesheets[all][] = css/panel-panes.css
+
+  ; Dark stylesheet for building negative or dark designs.
   ;stylesheets[all][] = css/dark.css
 
 
 ;----------// Regions
+
   regions[sidebar_first]     = Sidebar first
   regions[sidebar_second]    = Sidebar second
   regions[content]           = Main Content
@@ -45,6 +49,7 @@
 
 
 ;----------// Gpanel Regions
+
   ; 2 col 2x50
   ;regions[two_50_first]  = 2col 2x50 Gpanel col 1
   ;regions[two_50_second] = 2col 2x50 Gpanel col 2
@@ -198,9 +203,9 @@
   ; Extra markup
   settings[menu_item_span_elements] = 0
 
-; Information added by drupal.org packaging script on 2011-09-19
-version = "7.x-2.0"
+; Information added by drupal.org packaging script on 2012-02-16
+version = "7.x-2.2"
 core = "7.x"
 project = "adaptivetheme"
-datestamp = "1316444803"
+datestamp = "1329397237"
 

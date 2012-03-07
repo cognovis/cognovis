@@ -25,7 +25,6 @@ CKEDITOR.editorConfig = function(config) {
     config.protectedSource.push(/<\?[\s\S]*?\?>/g); // PHP Code
     config.protectedSource.push(/<code>[\s\S]*?<\/code>/gi); // Code tags
     config.extraPlugins = '';
-    config.extraPlugins += (config.extraPlugins ? ',syntaxhighlight' : 'syntaxhighlight' );
 
     /*
     * Append here extra CSS rules that should be applied into the editing area.
@@ -98,6 +97,5 @@ Drupal.settings.cke_toolbar_DrupalFull = [
     ['Format','Font','FontSize'],
     ['TextColor','BGColor'],
     ['Maximize', 'ShowBlocks'],
-    ['DrupalBreak', 'DrupalPageBreak'],
-    ['DrupalBreak', 'DrupalPageBreak', 'Code']
+    ['DrupalBreak', 'DrupalPageBreak']
 ];

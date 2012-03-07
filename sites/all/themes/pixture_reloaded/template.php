@@ -6,7 +6,7 @@
  */
 function pixture_reloaded_preprocess_html(&$vars) {
   global $theme_key;
-  
+
   $theme_name = 'pixture_reloaded';
   $path_to_theme = drupal_get_path('theme', $theme_name);
 
@@ -32,6 +32,7 @@ function pixture_reloaded_preprocess_html(&$vars) {
     'box_shadows',
     'body_background',
     'menu_bullets',
+    'menu_bar_position',
     'corner_radius',
     'image_alignment',
   );

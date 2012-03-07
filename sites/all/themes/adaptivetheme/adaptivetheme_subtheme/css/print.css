@@ -1,11 +1,10 @@
 /**
- *
  * Basic styles for print.
- * TODO: This needs work.
+ * TODO: This probably needs work, but is a good starting point.
  */
 
 /* Body */
-body { 
+body {
   width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;

@@ -199,7 +199,7 @@ function adaptivetheme_links($vars) {
 }
 
 /**
- * Modify the output of theme_field to support HTML5 in AT7.
+ * Modify the output of theme_field to use H2 for field lables.
  * There is a mirror image of this code as a template file in the
  * templates directory, see field.tpl.php.txt (example file to use
  * for template suggestions).

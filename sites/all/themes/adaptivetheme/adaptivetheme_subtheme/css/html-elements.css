@@ -1,12 +1,19 @@
+/* html elements */
 
+/**
+ * The default font size is 16px x 81.3% = 13px
+ * Use http://pxtoem.com to calculate proper font size and scale.
+ *
+ * The font size is set on the html element so we can dynamically
+ * resize the font using body classes.
+ */
 html {
-  font-size: 81.3%; /* 16px x 81.3% = 13px */
+  font-size: 81.3%;
 }
 body {
   font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
-  line-height: 1.5; /* Unit-less line-height means line height can scale. */
+  line-height: 1.5;
 }
-/* Sizes match proper font scaling. */
 h1 {
   font-size: 1.538em;
 }
@@ -24,10 +31,11 @@ h6 {
   font-size: 1em;
 }
 a img {
-  border:none;
+  border: none;
 }
 img {
-  max-width: 100%; /* flexible images */
+  max-width: 100%; /* flexible images - can cause issues in table cells where no width is set on the column, only in webkit and IE 7/8 */
+  height: auto;
 }
 p {
   margin: 0 0 1.5em;
@@ -48,12 +56,12 @@ samp,
 kbd,
 var {
   font-size: 1em;
-  font-family: Consolas, "Lucida Console", Menlo, Monaco, "DejaVu Sans Mono", monospace, sans-serif; /* Safari hack */
+  font-family: Consolas, "Lucida Console", Menlo, Monaco, "DejaVu Sans Mono", monospace, sans-serif; /* sans-serif Safari hack */
 }
 blockquote,
 q {
-  font-style:italic;
-  quotes:"" "";
+  font-style: italic;
+  quotes: "" "";
 }
 blockquote {
   margin: 0 0 1.5em;
@@ -63,7 +71,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content:"";
+  content: "";
 }
 blockquote p {
   margin: 0;
@@ -78,12 +86,16 @@ th {
 /* Lists */
 ul,
 ol {
-  margin: 0 0 1.5em 1em;
-  padding:0;
+  margin: 0 0 1.5em 40px;
+  padding: 0;
 }
 .item-list ul,
 .item-list ol {
-  margin: 0 0 0 1em;
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+.item-list ul li {
+  margin: 0;
   padding: 0;
 }
 ul ul,
@@ -123,5 +135,5 @@ dt {
   font-weight: 700;
 }
 dd {
-  margin: 0 0 1.5em 1.538em;
+  margin: 0 0 1.5em 40px;
 }

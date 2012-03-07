@@ -3,7 +3,7 @@
 
   Adaptivetheme includes special conditional classes on the HTML element
   which allow you to easily target styles at specific version of IE.
-  
+
   These are the classes you can use:
 
   .iem7  - IE7 Mobile
@@ -16,7 +16,6 @@
   If you prefer to use IE conditional stylesheets please see template.php - we
   have included a very simple method of loading conditional stylesheets, read more
   about this in our online docs:
-  
+
   http://adaptivethemes.com/documentation/working-with-internet-explorer
-  
-  
+

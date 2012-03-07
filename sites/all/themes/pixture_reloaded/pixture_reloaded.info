@@ -177,8 +177,9 @@
   settings[image_caption_teaser] = 0
   settings[image_caption_full]   = 0
 
-  ; Menu bullets
-  settings[menu_bullets] = 'mb-dd'
+  ; Menus
+  settings[menu_bar_position] = 'mbp-l'
+  settings[menu_bullets]      = 'mb-dd'
 
   ; Noggin extra settings
   settings[noggin_image_horizontal_alignment] = 'c'
@@ -186,9 +187,9 @@
   settings[noggin_image_repeat]               = 'ni-r-nr'
   settings[noggin_image_width]                = 'ni-w-a'
 
-; Information added by drupal.org packaging script on 2011-09-19
-version = "7.x-2.1"
+; Information added by drupal.org packaging script on 2011-10-04
+version = "7.x-2.2"
 core = "7.x"
 project = "pixture_reloaded"
-datestamp = "1316460708"
+datestamp = "1317763908"
 

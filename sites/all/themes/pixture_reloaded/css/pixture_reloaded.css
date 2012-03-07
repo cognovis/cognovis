@@ -3,7 +3,7 @@
 body,
 #branding,
 #header hgroup {
-  padding: 0; 
+  padding: 0;
   margin: 0;
 }
 #columns {
@@ -61,6 +61,10 @@ html {
 body {
   line-height: 1.5;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 a img {
   border: none;
 }
@@ -78,10 +82,10 @@ tt,
 samp,
 kbd,
 var {
-  font: 1em "Lucida Console",Monaco,"DejaVu Sans Mono",monospace;
+  font: 1em "Lucida Console", Monaco, "DejaVu Sans Mono", sans-serif; /* Safari workaround */
 }
 blockquote,q {
-  font-style:italic;
+  font-style: italic;
   quotes: "" "";
 }
 blockquote {
@@ -107,7 +111,7 @@ th {
 /* Lists */
 ul,
 ol {
-  margin: 0 0 1.5em 1.667em;
+  margin: 0 0 1.5em 30px;
   padding: 0;
 }
 ul ul,
@@ -147,11 +151,11 @@ dt {
   font-weight: 700;
 }
 dd {
-  margin: 0 0 1.5em 1.667em;
+  margin: 0 0 1.5em 30px;
 }
 .item-list ul,
 .item-list ol {
-  margin: 0 0 0 1.667em;
+  margin: 0 0 0 30px;
   padding: 0;
 }
 .block .menu li {
@@ -178,7 +182,7 @@ h4, h5, h6 {
 p {
   margin-top: 0.4em;
   margin-bottom: 0.8em;
-  padding:0;
+  padding: 0;
 }
 em {
   text-decoration: none;
@@ -195,8 +199,8 @@ blockquote {
 }
 abbr, acronym {
   border-bottom: none;
-} 
-.article .article-content, 
+}
+.article .article-content,
 .comment .comment-content {
   line-height: 1.5em;
 }
@@ -221,14 +225,10 @@ a.active:focus {
 #header {
   margin: 0;
   padding: 0;
-  _height: 88px;
-  max-height: 88px;
 }
 #branding {
   float: left;
   padding: 0;
-  _height: 88px;
-  max-height: 88px;
   width: 49.5%; /* Adjust this if you have a very long site name or large logo */
 }
 #logo {
@@ -239,11 +239,25 @@ a.active:focus {
   padding: 10px 0 0 10px;
 }
 #head-elements {
-  _height: 88px;
-  min-height: 88px;
   margin: 0 0 0 15px;
   padding: 0;
 }
+
+/* Set heights on branding and header elements */
+#header,
+#branding {
+  max-height: 88px;
+}
+#head-elements {
+  min-height: 88px;
+}
+/* IE6 treats height like max height */
+.ie6 #header,
+.ie6 #branding,
+.ie6 #head-elements {
+  height: 88px;
+}
+
 #branding {
   text-transform: uppercase;
 }
@@ -292,6 +306,9 @@ a.active:focus {
 #menu-bar ul {
   padding: 0 15px;
 }
+#menu-bar ul ul {
+  padding: 0;
+}
 #menu-bar ul,
 #menu-bar ul li {
   margin: 0;
@@ -300,14 +317,14 @@ a.active:focus {
 }
 #menu-bar ul li {
   float: left;
-  padding: 0 15px 0 0; /* RTL */
+  padding: 0;
 }
-#menu-bar ul.links li a {
+#menu-bar ul li a {
   font-weight: bold;
+  padding: 0 10px;
 }
-#menu-bar ul.links li a:hover {
+#menu-bar ul.menu li a:hover {
   background: transparent;
-  text-decoration: underline;
 }
 #menu-bar .block,
 #menu-bar .block-inner,
@@ -318,7 +335,7 @@ a.active:focus {
 }
 /**
  * Hide additional menu levels for normal menu blocks - I can't think of a better
- * way of handling these - you should really use http://drupal.org/project/menu_block 
+ * way of handling these - you should really use http://drupal.org/project/menu_block
  */
 #menu-bar .block-menu ul ul {
   display: none;
@@ -332,7 +349,7 @@ a.active:focus {
 #main-content .article-teaser {
   padding: 10px;
 }
-.article-full-view .article h1.article-title, 
+.article-full-view .article h1.article-title,
 .article h1.article-title {
   margin: 0;
   padding-top: 0;
@@ -353,7 +370,7 @@ a.active:focus {
   max-width: 100%;
 }
 .article .submitted {
-  margin-top: 3px; 
+  margin-top: 3px;
   padding: 0;
 }
 .article .article-content {
@@ -363,7 +380,7 @@ a.active:focus {
   font-size: 0.9em;
 }
 .article .taxonomy {
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 .article .taxonomy li {
@@ -378,7 +395,7 @@ a.active:focus {
   float: right;
 }
 /* Node Teaser */
-#content .article-teaser { 
+#content .article-teaser {
   margin: 0 0 15px;
   padding: 10px;
   overflow: hidden;
@@ -415,12 +432,12 @@ article .field-type-image.field-label-inline .field-label {
 
 /* Comments */
 #comments h2 {
-  border-bottom: none; 
+  border-bottom: none;
 }
 .comment {
-  border:none;
-  margin:0 0 10px;
-  padding:10px;
+  border: none;
+  margin: 0 0 10px;
+  padding: 10px;
 }
 .comment .comment-title a {
   font-size: 1.2em;
@@ -454,7 +471,7 @@ article .field-type-image.field-label-inline .field-label {
 }
 .block-title {
   font-size: 1.167em;
-  margin: 0px;
+  margin: 0;
   padding: 5px 10px 4px;
 }
 .block h3 {
@@ -468,15 +485,15 @@ article .field-type-image.field-label-inline .field-label {
   padding: 0;
 }
 .block .item-list ul {
-  margin-left:0;
+  margin-left: 0;
 }
 .block .item-list ul ul,
 .block .item-list ul ul ul {
-  margin-left:1em;
+  margin-left: 1em;
 }
 .block ul.links {
-  margin:0;
-  padding:0 0 5px;
+  margin: 0;
+  padding: 0 0 5px;
 }
 .block ul.links li {
   font-size: .94em;
@@ -535,13 +552,12 @@ tabel .field-type-image img {
 }
 
 /* Lists */
-ul {
-  margin: 0;
-  padding: 0 0 0 1em;
+ul ul{
+  margin-left: 15px;
 }
-li a, 
-li a:visited, 
-li a:active, 
+li a,
+li a:visited,
+li a:active,
 li a:hover {
   font-weight: normal;
 }
@@ -555,7 +571,7 @@ li a:hover {
 }
 ul.links li {
   margin: 0;
-  padding: 0 2px;  
+  padding: 0 2px;
 }
 .comment .links {
   margin-bottom: 0;
@@ -578,8 +594,8 @@ ul.action-links {
   padding: 1em;
   margin: 1em 0;
 }
-#aggregator .news-item .categories, 
-#aggregator .source, 
+#aggregator .news-item .categories,
+#aggregator .source,
 #aggregator .age {
   font-style: italic;
   font-size: 0.9em;
@@ -610,7 +626,7 @@ div.forum-topic-navigation a.topic-previous {
   padding-top: 0.6em;
 }
 #forum tr td.forum .name {
-  padding-left:2em;
+  padding-left: 2em;
 }
 
 /* Profile */
@@ -704,12 +720,12 @@ div.admin-panel a {
   font-weight: normal;
 }
 div.admin-panel .description {
-  margin:0 0 3px;
-  padding:2px 0 3px 10px;
+  margin: 0 0 3px;
+  padding: 2px 0 3px 10px;
 }
 div.admin-panel .body dl .description {
-  margin:0 0 3px;
-  padding:2px 0 3px;
+  margin: 0 0 3px;
+  padding: 2px 0 3px;
 }
 #block-system-help {
   background: none;
@@ -828,6 +844,18 @@ ol#crumbs li {
   display: inline;
 }
 
+/* Menus */
+ul.menu {
+  margin: 0 0 0 15px;
+  padding: 0;
+}
+ul.menu ul {
+  margin-left: 15px;
+}
+.ie6-7 ul.menu {
+  padding-left: 15px;
+}
+
 /* Quicktabs */
 .block-quicktabs .block-inner {
   background: none !important;
@@ -844,8 +872,10 @@ ol#crumbs li {
   list-style: none;
 }
 
-
 /* Superfish */
+ul.sf-menu li ul {
+  display: none; /* Prevent sub menus from momentarily displaying */
+}
 /* sf-horizontal - classic drop menu style */
 .nav .block-superfish {
   padding: 0;
@@ -875,7 +905,7 @@ ul.sf-menu.sf-vertical a.active {
   padding: 0;
 }
 ul.sf-menu.sf-horizontal li:hover ul,
-ul.sf-menu.sf-horizontal li.sfHover ul { 
+ul.sf-menu.sf-horizontal li.sfHover ul {
 }
 ul.sf-menu.sf-horizontal a.sf-with-ul,
 ul.sf-menu.sf-navbar a.sf-with-ul {
@@ -961,94 +991,94 @@ ul.sf-menu.sf-vertical a:focus {
 
 /* Tables */
 table {
-  border-spacing:0;
-  border-color:#eee;
-  margin:1em 0;
-  padding:0;
-  width:100%;
+  border-spacing: 0;
+  border-color: #eee;
+  margin: 1em 0;
+  padding: 0;
+  width: 100%;
 }
 table,
 td,
 th {
-  vertical-align:middle;
+  vertical-align: middle;
 }
 caption,
 th,
 td {
-  text-align:left;
+  text-align: left;
 }
 thead th {
-  border-bottom:1px solid #eee;
-  color:#494949;
-  font-weight:700;
+  border-bottom: 1px solid #eee;
+  color: #494949;
+  font-weight: 700;
 }
 td,
 th {
-  border-bottom:none;
-  margin:0;
-  padding:.375em .5em;
+  border-bottom: none;
+  margin: 0;
+  padding: .375em .5em;
 }
 tr.even,
 tr.odd {
-  border-bottom:none;
+  border-bottom: none;
 }
 tr.odd,
 tr.info {
-  background-color:#f5f5f5;
+  background-color: #f5f5f5;
 }
 tr.even {
-  background-color:#fff;
+  background-color: #fff;
 }
 tr.drag {
-  background-color:#fffff0;
+  background-color: #fffff0;
 }
 tr.drag-previous {
-  background-color:#ffd;
+  background-color: #ffd;
 }
 tr.odd td.active {
-  background-color:#eee;
+  background-color: #eee;
 }
 tr.even td.active {
-  background-color:#f7f7f7;
+  background-color: #f7f7f7;
 }
 td.region,
 td.module,
 td.container td.category {
-  background-color:#eee;
-  border-bottom:1px solid #ccc;
-  border-top:1.5em solid #fff;
-  color:#222;
-  font-weight:700;
+  background-color: #eee;
+  border-bottom: 1px solid #ccc;
+  border-top: 1.5em solid #fff;
+  color: #222;
+  font-weight: 700;
 }
 tr:first-child td.region,
 tr:first-child td.module,
 tr:first-child td.container {
-  border-top-width:0;
+  border-top-width: 0;
 }
 #forum tr td.forum {
-  background-position:5px 5px;
+  background-position: 5px 5px;
 }
 #forum tr td.forum .name {
-  padding-left:.375em;
+  padding-left: .375em;
 }
 #forum div.indent {
-  margin-left:.5em;
+  margin-left: .5em;
 }
 #forum .description {
   font-size: 0.9em;
   margin: 0.5em 0 0 34px;
 }
 #system-themes-form table.sticky-table {
-  position:relative;
-  z-index:10;
+  position: relative;
+  z-index: 10;
 }
 span.tabledrag-changed {
-  display:none;
+  display: none;
 }
 table, tr, td, thead, tbody {
   border-spacing: 0;
   border-collapse: collapse;
-  border-width: 0px;
+  border-width: 0;
 }
 table {
   /* make <td> sizes relative to body size! */
@@ -1059,8 +1089,8 @@ table {
 
 /* Forms */
 form {
-  margin:0 0 1.5em;
-  padding:0;
+  margin: 0 0 1.5em;
+  padding: 0;
 }
 .form-item label {
   font-weight: 400;
@@ -1086,12 +1116,12 @@ select {
 .form-checkbox:focus,
 .form-radio:focus,
 .form-select:focus {
-  border: 1px solid #fco;
+  border: 1px solid #fc0;
   background: #ffffdf;
 }
 textarea:focus {
-  border:1px solid #FC0;
-  background:#FFF;
+  border:1px solid #fc0;
+  background:#fff;
 }
 input.text,
 input.title {
@@ -1099,7 +1129,7 @@ input.title {
 }
 input.form-text,
 textarea {
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   height: auto;
   padding: 2px;
 }
@@ -1137,7 +1167,7 @@ fieldset {
   padding: .75em;
 }
 *:first-child+html fieldset {
-  background-color:transparent;
+  background-color: transparent;
   background-position: 0 .75em;
   padding: 0 1em .75em;
 }
@@ -1146,7 +1176,7 @@ fieldset {
   padding-top: 1.5em;
 }
 fieldset legend {
-  display:block;
+  display: block;
   font-weight: 400;
   padding: 0 1em 0 0;
 }
@@ -1262,3 +1292,15 @@ fieldset#edit-advanced fieldset .fieldset-legend {
   display: block;
 }
 
+/* Reset textarea backgrounds in WYSIWYG module text editors */
+body.wysiwygeditor {
+  background-color: #fff;
+  background-image: none;
+}
+
+/* Override max-width 100% for Gmaps and Getlocations modules */
+.gmap img,
+.view-gmap img,
+#getlocations_map_canvas img {
+  max-width: none;
+}

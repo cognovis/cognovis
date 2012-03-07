@@ -1,40 +1,32 @@
+/* Page */
 
-#page > header {
-  clear: both;
-  padding: 10px 0 0;
-}
+/* Header */
+#page > header {}
 #logo {
-  float: left;
-  padding: 0 10px;
+  margin: 0 10px;
 }
 #page > header > hgroup {
-  float: left;
-  line-height: 1.2;
+  margin: 0 10px;
 }
-#site-name {
-  font-size: 1.846em;
-}
-#site-name a    {
-  text-decoration: none;
-}
+#site-name {}
+#site-name a    {}
 #site-name a:visited {}
 #site-name a:hover   {}
 #site-name a:focus   {}
 #site-name a:active  {}
+#site-slogan {}
 
-#site-slogan {
-  font-size: 1.077em;
-  font-weight: 400;
-}
-
-.region-header {
-  float: right;
-}
-
+/* Page title */
 h1#page-title {}
-.in-maintenance h1#page-title {
-  padding: 10px;
-}
+
+/* Regions */
+.region-leaderboard {}
+.region-header {}
+.region-secondary-content {}
+.region-highlighted {}
+.region-content-aside {}
+.region-tertiary-content {}
+.region-footer {}
 
 /* Sidebars */
 .sidebar {}
@@ -45,41 +37,25 @@ h1#page-title {}
 #page > footer {}
 
 /* Feed icons */
-.feed-icon img {
-  padding: 0 10px;
-}
 #feed-icons {}
 #feed-icons .feed-icon {}
 #feed-icons .feed-icon img {}
 #feed-icons a.feed-icon {}
 
 /* Search results list. */
-.search-results {
-  margin: 0;
-}
+.search-results {}
 .search-results .search-result {}
-.search-results .title {
-  font-size: 1.154em;
-}
-.search-results .search-snippet-info {
-  padding: 0;
-}
-.search-results p {
-  margin: 0;
-}
+.search-results .title {}
+.search-results .search-snippet-info {}
+.search-results p {}
 .search-results .search-snippet {}
-.search-results .search-info {
-  font-size: .923em;
-}
+.search-results .search-info {}
+
 span.search-info-type {}
 span.search-info-user {}
 span.search-info-date {}
 span.search-info-comment {}
 span.search-info-upload  {}
-
-/* Button Wrappers */
-span.button-wrapper {} /* Outer wrapper */
-span.button {} /* Inner wrapper */
 
 /* Aggregator */
 .feed-item {}
@@ -88,10 +64,7 @@ span.button {} /* Inner wrapper */
 .feed-item-meta {}
 .feed-item .content {}
 .feed-item footer {}
-
-.feed-source {
-  margin: 1em 0;
-}
+.feed-source {}
 .feed-description {}
 
 /* Maintenance page */
@@ -105,4 +78,17 @@ span.button {} /* Inner wrapper */
 .maintenance-page footer a {
   text-decoration: none;
   color: #ccc;
+}
+
+/* Prevent overflowing content */
+header[role=banner],
+.content-inner,
+.nav,
+.region-sidebar-first,
+.region-sidebar-second,
+.region-secondary-content,
+.region-tertiary-content,
+.region-footer {
+  overflow: visible;
+  word-wrap: break-word;
 }

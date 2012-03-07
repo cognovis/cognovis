@@ -2,14 +2,7 @@
 
 /**
  * Implements hook_form_system_theme_settings_alter().
- *
- * Work around a core double invoke bug. This only needs to exist in the base
- * theme. Use hook_form_theme_settings() for the real work.
- *
- * @see http://drupal.org/node/943212
- * @see http://drupal.org/node/1135794
  */
-
 function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $form_id = NULL) {
 
   // General "alters" use a form id. Settings should not be set here. The only
@@ -19,14 +12,14 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
     return;
   }
 
-  // Add some CSS so we can style our form in any theme, i.e. in Seven.
-  drupal_add_css(drupal_get_path('theme', 'adaptivetheme') . '/css/at.settings.form.css', array('group' => CSS_THEME));
-
   // Layout settings
   $form['at'] = array(
     '#type' => 'vertical_tabs',
     '#weight' => -10,
     '#default_tab' => 'defaults',
+    '#attached' => array(
+      'css' => array(drupal_get_path('theme', 'adaptivetheme') . '/css/at.settings.form.css'),
+    ),
   );
   // bigscreen
   $form['at']['bigscreen'] = array(
@@ -636,9 +629,13 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
     '#type' => 'fieldset',
     '#weight' => '96',
     '#title' => t('Breadcrumbs'),
+  );
+  $form['at']['breadcrumb']['bd'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Breadcrumbs'),
     '#description' => t('<h3>Breadcrumb Settings</h3>'),
   );
-  $form['at']['breadcrumb']['breadcrumb_display'] = array(
+  $form['at']['breadcrumb']['bd']['breadcrumb_display'] = array(
     '#type' => 'select',
     '#title' => t('Show breadcrumbs'),
     '#default_value' => theme_get_setting('breadcrumb_display'),
@@ -647,7 +644,7 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
       'no' => t('No'),
     ),
   );
-  $form['at']['breadcrumb']['breadcrumb_separator'] = array(
+  $form['at']['breadcrumb']['bd']['breadcrumb_separator'] = array(
     '#type'  => 'textfield',
     '#title' => t('Separator'),
     '#description' => t('Text only. Dont forget to include spaces.'),
@@ -660,7 +657,7 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
       ),
     ),
   );
-  $form['at']['breadcrumb']['breadcrumb_home'] = array(
+  $form['at']['breadcrumb']['bd']['breadcrumb_home'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show the homepage link'),
     '#default_value' => theme_get_setting('breadcrumb_home'),
@@ -673,44 +670,48 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
     ),
   );
   // Search Settings
-  $form['at']['search_results'] = array(
+  $form['at']['search-results'] = array(
     '#type' => 'fieldset',
     '#weight' => '97',
     '#title' => t('Search Results'),
+  );
+  $form['at']['search-results']['srs'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search Results Display'),
     '#description' => t('<h3>Search Result Display</h3><p>Modify what is displayed below each search result</p>'),
   );
-  $form['at']['search_results']['search_snippet'] = array(
+  $form['at']['search-results']['srs']['search_snippet'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display text snippet'),
     '#default_value' => theme_get_setting('search_snippet'),
   );
-  $form['at']['search_results']['search_info_type'] = array(
+  $form['at']['search-results']['srs']['search_info_type'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display content type'),
     '#default_value' => theme_get_setting('search_info_type'),
   );
-  $form['at']['search_results']['search_info_user'] = array(
+  $form['at']['search-results']['srs']['search_info_user'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display author name'),
     '#default_value' => theme_get_setting('search_info_user'),
   );
-  $form['at']['search_results']['search_info_date'] = array(
+  $form['at']['search-results']['srs']['search_info_date'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display posted date'),
     '#default_value' => theme_get_setting('search_info_date'),
   );
-  $form['at']['search_results']['search_info_comment'] = array(
+  $form['at']['search-results']['srs']['search_info_comment'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display comment count'),
     '#default_value' => theme_get_setting('search_info_comment'),
   );
-  $form['at']['search_results']['search_info_upload'] = array(
+  $form['at']['search-results']['srs']['search_info_upload'] = array(
     '#type' => 'checkbox',
     '#title' => t('Display attachment count'),
     '#default_value' => theme_get_setting('search_info_upload'),
   );
   // Search_info_separator
-  $form['at']['search_results']['search_info_separator'] = array(
+  $form['at']['search-results']['srs']['search_info_separator'] = array(
     '#type' => 'textfield',
     '#title' => t('Separator'),
     '#description' => t('Modify the separator between each of the above items. The default is a hypen with a space before and after.'),
@@ -720,13 +721,18 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
   );
   // Horizonatal login block
   if (theme_get_setting('horizontal_login_block_enable') == 'on') {
-    $form['at']['login_block'] = array(
+    $form['at']['login-block'] = array(
       '#type' => 'fieldset',
       '#weight' => '99',
       '#title' => t('Login Block'),
+    );
+    $form['at']['login-block']['hlb'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Login Block'),
       '#description' => t('<h3>Login Block Options</h3>'),
     );
-    $form['at']['login_block']['horizontal_login_block'] = array(
+    
+    $form['at']['login-block']['hlb']['horizontal_login_block'] = array(
       '#type' => 'checkbox',
       '#title' => t('Horizontal Login Block'),
       '#default_value' => theme_get_setting('horizontal_login_block'),
@@ -738,9 +744,13 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
     '#type' => 'fieldset',
     '#weight' => '100',
     '#title' => t('Comments'),
+  );
+  $form['at']['comments']['comment-title'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Comment Options'),
     '#description' => t('<h3>Comment Options</h3>'),
   );
-  $form['at']['comments']['comments_hide_title'] = array(
+  $form['at']['comments']['comment-title']['comments_hide_title'] = array(
     '#type' => 'checkbox',
     '#title' => t('Hide the comment title'),
     '#default_value' => theme_get_setting('comments_hide_title'),
@@ -751,34 +761,38 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
     '#type' => 'fieldset',
     '#weight' => '101',
     '#title' => t('CSS Classes'),
-    '#description' => t('<h3>Add or Remove CSS Classes</h3><p>Many classes are removed by default (unchecked checkbox), to add classes check the checkbox.</p>'),
   );
-  $form['at']['classes']['extra_page_classes'] = array(
+  $form['at']['classes']['extra-classes'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Extra Classes'),
+    '#description' => t('<h3>Extra CSS Classes</h3>'),
+  );
+  $form['at']['classes']['extra-classes']['extra_page_classes'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Pages: ') . '<span class="description">' . t('add page-path, add/edit/delete (for workflow states), and a language class (i18n).') . '</span>',
+    '#title' => t('Pages: ') . '<span class="description">' . t('add page-path, add/edit/delete (for workflow states), content type classes, section classes and a language class (i18n).') . '</span>',
     '#default_value' => theme_get_setting('extra_page_classes'),
   );
-  $form['at']['classes']['extra_article_classes'] = array(
+  $form['at']['classes']['extra-classes']['extra_article_classes'] = array(
     '#type' => 'checkbox',
     '#title' => t('Articles: ') . '<span class="description">' . t('add promoted, sticky, preview, language, odd/even classes, user picture handling, and build mode classes such as .article-teaser and .article-full.') . '</span>',
     '#default_value' => theme_get_setting('extra_article_classes'),
   );
-  $form['at']['classes']['extra_comment_classes'] = array(
+  $form['at']['classes']['extra-classes']['extra_comment_classes'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Comments: ') . '<span class="description">' . t('add anonymous, author, viewer, new, odd/even classes and classes for title, user picture and signature handling.') . '</span>',
+    '#title' => t('Comments: ') . '<span class="description">' . t('add anonymous, author, viewer, new, odd/even classes and classes for hidden titles, user picture and signature handling.') . '</span>',
     '#default_value' => theme_get_setting('extra_comment_classes'),
   );
-  $form['at']['classes']['extra_block_classes'] = array(
+  $form['at']['classes']['extra-classes']['extra_block_classes'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Blocks: ') . '<span class="description">' . t('add odd/even, block region and block count classes.') . '</span>',
+    '#title' => t('Blocks: ') . '<span class="description">' . t('add odd/even (zebra classes), block region and block count classes.') . '</span>',
     '#default_value' => theme_get_setting('extra_block_classes'),
   );
-  $form['at']['classes']['extra_menu_classes'] = array(
+  $form['at']['classes']['extra-classes']['extra_menu_classes'] = array(
     '#type' => 'checkbox',
     '#title' => t('Menus: ') . '<span class="description">' . t('add an extra class based on the menu link ID (mlid).') . '</span>',
     '#default_value' => theme_get_setting('extra_menu_classes'),
   );
-  $form['at']['classes']['extra_item_list_classes'] = array(
+  $form['at']['classes']['extra-classes']['extra_item_list_classes'] = array(
     '#type' => 'checkbox',
     '#title' => t('Item-lists: ') . '<span class="description">' . t('add first, last and odd/even classes.') . '</span>',
     '#default_value' => theme_get_setting('extra_item_list_classes'),
@@ -787,11 +801,15 @@ function adaptivetheme_form_system_theme_settings_alter(&$form, &$form_state, $f
   $form['at']['markup'] = array(
     '#type' => 'fieldset',
     '#title' => t('Markup'),
-    '#description' => t('<h3>Extra Markup Options</h3>'),
     '#weight' => 101,
   );
+  $form['at']['markup']['menu-links'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Menu items markup'),
+    '#description' => t('<h3>Extra Markup Options</h3>'),
+  );
   // Add spans to theme_links
-  $form['at']['markup']['menu_links']['menu_item_span_elements'] = array(
+  $form['at']['markup']['menu-links']['menu_item_span_elements'] = array(
     '#type' => 'checkbox',
     '#title' => t('Wrap menu item text in SPAN tags - useful for certain theme or design related techniques'),
     '#description' => t('Note: this does not work for Superfish menus, which includes its own feature for doing this.'),

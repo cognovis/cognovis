@@ -1,6 +1,3 @@
-/**
- */
-
 /* Articles (nodes) */
 .article {
   margin-bottom: 20px;
@@ -8,51 +5,30 @@
 
 .article > header {}
 
-/* Teaser title. */
+/* Title */
 .article-title {}
 .article-title a:link,
 .article-title a:visited,
-.article-title a:active {
-  text-decoration: none;
-}
+.article-title a:active {}
+
 .article-title a:hover,
-.article-title a:focus {
-  text-decoration: underline;
-}
+.article-title a:focus {}
 
-/* Skinr article title alignment. */
-.ta-l .article-title {
-  text-align: left;
-}
-.ta-r .article-title {
-  text-align: right;
-}
-.ta-c .article-title {
-  text-align: center;
-}
-
-/* User Picture. */
+/* User Picture */
 .article .user-picture {}
 .article .user-picture img {}
 
 /* Submitted */
-.article > footer {}
-.article > footer a {}
-.article > footer a:hover {}
-.article > footer .username {}
-.article > footer time {}
-.article footer p {
-  margin: 0;
-}
+.article .submitted {}
+.article .submitted  a {}
+.article .submitted  a:hover {}
+.article .submitted  p.author-datetime {}
+.article .submitted  time {}
 
-/* Links. */
-.article ul.links {
-  margin: 0;
-}
-.article ul.links li {
-  margin: 0;
-  padding: 0 .75em 0 0;
-}
+/* Links */
+.article nav {}
+.article ul.links {}
+.article ul.links li {}
 .article ul.links li a {}
 .article ul.links li.node_read_more a {}
 .article ul.links li.comment_add a {}
@@ -63,11 +39,11 @@
 .article ul.links li.print_email a {}
 .article ul.links li.print_pdf a {}
 
-/* UL link first and last classes. */
+/* UL link first and last classes */
 .article ul.links li.first {}
 .article ul.links li.last  {}
 
-/* Workflow states. */
+/* Workflow states */
 .article-add    {}
 .article-edit   {}
 .article-delete {}
@@ -75,8 +51,8 @@
 .article-sticky   {}
 .article-promoted {}
 
-/* Status. */
+/* Status */
 .article-unpublished {}
 
-/* Theme the teaser. */
+/* Theme the teaser */
 .article-teaser {}

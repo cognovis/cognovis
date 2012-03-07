@@ -1817,7 +1817,7 @@ function format_size($size, $langcode = NULL) {
 /**
  * Formats a time interval with the requested granularity.
  *
- * @param $timestamp
+ * @param $interval
  *   The length of the interval in seconds.
  * @param $granularity
  *   How many different units to display in the string.
@@ -1828,7 +1828,7 @@ function format_size($size, $langcode = NULL) {
  * @return
  *   A translated string representation of the interval.
  */
-function format_interval($timestamp, $granularity = 2, $langcode = NULL) {
+function format_interval($interval, $granularity = 2, $langcode = NULL) {
   $units = array(
     '1 year|@count years' => 31536000,
     '1 month|@count months' => 2592000,
@@ -1841,9 +1841,9 @@ function format_interval($timestamp, $granularity = 2, $langcode = NULL) {
   $output = '';
   foreach ($units as $key => $value) {
     $key = explode('|', $key);
-    if ($timestamp >= $value) {
-      $output .= ($output ? ' ' : '') . format_plural(floor($timestamp / $value), $key[0], $key[1], array(), array('langcode' => $langcode));
-      $timestamp %= $value;
+    if ($interval >= $value) {
+      $output .= ($output ? ' ' : '') . format_plural(floor($interval / $value), $key[0], $key[1], array(), array('langcode' => $langcode));
+      $interval %= $value;
       $granularity--;
     }
 
@@ -2370,7 +2370,7 @@ function l($text, $path, array $options = array()) {
     // rendering.
     if (variable_get('theme_link', TRUE)) {
       drupal_theme_initialize();
-      $registry = theme_get_registry();
+      $registry = theme_get_registry(FALSE);
       // We don't want to duplicate functionality that's in theme(), so any
       // hint of a module or theme doing anything at all special with the 'link'
       // theme hook should simply result in theme() being called. This includes
@@ -7244,6 +7244,7 @@ function drupal_flush_all_caches() {
   system_rebuild_theme_data();
   drupal_theme_rebuild();
 
+  entity_info_cache_clear();
   node_types_rebuild();
   // node_menu() defines menu items based on node types so it needs to come
   // after node types are rebuilt.
